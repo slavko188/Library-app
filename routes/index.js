@@ -1,8 +1,10 @@
 const { Router } = require("express");
-const router = Router();
+const router = new Router();
 
-router.get("/", (req, res) => {
-  res.render("index");
-});
+// GET
+router.get("/", require("../controllers/home/renderHome.js"));
+
+//MIDLWERE
+router.use("/portfolio", require("../controllers/portfolio/renderAboutPage"));
 
 module.exports = router;
