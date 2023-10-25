@@ -1,0 +1,81 @@
+<%- include('partials/head.ejs') %> <%- include('partials/navbar.ejs') %>
+
+<section id="contact">
+  <div class="row section-intro">
+    <div class="col-twelve">
+      <h5>Contact</h5>
+      <h1>Volio bih cuti vase misljenje.</h1>
+      <p class="lead">
+        Misljenja su mnogo vazna da bi unaprijedili i poboljsali svoj
+        rad.Takodje uvazavamo i kritike za bolji i produktivniji rad.
+      </p>
+    </div>
+  </div>
+  <!-- /section-intro -->
+
+  <div class="row contact-form">
+    <div class="col-twelve">
+      <!-- form -->
+      <form name="contactForm" id="contactForm" method="post" action="/contact">
+        <fieldset>
+          <div class="form-field">
+            <input
+              name="contactName"
+              type="text"
+              id="contactName"
+              placeholder="Name"
+              value=""
+              minlength="2"
+              required=""
+            />
+          </div>
+          <div class="form-field">
+            <input
+              name="contactEmail"
+              type="email"
+              id="contactEmail"
+              placeholder="Email"
+              value=""
+              required=""
+            />
+          </div>
+          <div class="form-field">
+            <input
+              name="contactSubject"
+              type="text"
+              id="contactSubject"
+              placeholder="Subject"
+              value=""
+            />
+          </div>
+          <div class="form-field">
+            <textarea
+              name="contactMessage"
+              id="contactMessage"
+              placeholder="message"
+              rows="10"
+              cols="50"
+              required=""
+            ></textarea>
+          </div>
+          <div class="form-field">
+            <button class="submitform">Submit</button>
+            <div id="submit-loader">
+              <div class="text-loader">Slanje...</div>
+              <div class="s-loader">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<%- include('partials/footer.ejs') %>
