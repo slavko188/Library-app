@@ -6,7 +6,8 @@ const app = express();
 //Use midlwere
 
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(__dirname + "/public/colorlib-regform-9"));
+app.use(express.static(__dirname + "/templates/signUp-form"));
+app.use(express.static(__dirname + "/templates/login-form"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());

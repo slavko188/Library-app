@@ -7,9 +7,9 @@ const UserSchema = new Schema({
   mobile: { type: String, default: "" },
   email: { type: String, required: [true, "Email is required"] },
   password: { type: String, required: [true, "Password is required"] },
-  role: { type: String, required: role.USER },
-  image: { type: String, required: DEFAULT_USER_IMAGE },
-  joiningDate: { type: String, default: () => new Date().getDate() },
+  role: { type: String, default: role.USER },
+  image: { type: String, default: DEFAULT_USER_IMAGE },
+  joiningDate: { type: String, default: () => new Date().getTime().toString() },
 });
 
 const UserModel = model("users", UserSchema);
