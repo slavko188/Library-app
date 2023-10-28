@@ -10,7 +10,7 @@ router.get("/login", (req, res) => {
 });
 
 router.use("/auth", require("./auth"));
-router.get("/", require("../controllers/portfolio/renderHomePage"));
+router.get("/home", require("../controllers/portfolio/renderHomePage"));
 router.get("/about", require("../controllers/portfolio/renderAboutPage"));
 router.get("/contact", require("../controllers/portfolio/renderContactPage"));
 router.get("/hobi", require("../controllers/portfolio/renderHobiPage"));
