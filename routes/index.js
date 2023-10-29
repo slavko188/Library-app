@@ -11,7 +11,6 @@ router.get("/login", (req, res) => {
 
 router.use("/auth", require("./auth"));
 router.use("/home", require("./home"));
-
 router.get("/about", require("../controllers/portfolio/renderAboutPage"));
 router.get("/contact", require("../controllers/portfolio/renderContactPage"));
 router.get("/hobi", require("../controllers/portfolio/renderHobiPage"));
