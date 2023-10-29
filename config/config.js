@@ -1,5 +1,6 @@
 const role = {
   USER: "user",
+  ADMIN: "admin",
 };
 const DEFAULT_USER_IMAGE = "user_avatar.jpg";
 const UPLOAD_DIR = "/upload/";
