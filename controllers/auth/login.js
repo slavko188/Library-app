@@ -1,18 +1,24 @@
 const UserModel = require("../../models/UserModel");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     let foundUser = await UserModel.findOne({ email });
     if (foundUser) {
-      bcrypt.compare(password, foundUser.password, (err, isMatch) => {
+      bcryptjs.compare(password, foundUser.password, (err, isMatch) => {
         if (err) {
           res.render("error", { error: err.message });
           return;
         }
         if (isMatch) {
           //ULOGOVAN
-          res.redirect("/home");
+          (req.session.user = {
+            _id: foundUser._id,
+            firstName: foundUser.firstName,
+            role: foundUser.role,
+            image: foundUser.image,
+          }),
+            res.redirect("/home");
         } else {
           res.render("error", { error: "Credentials not suport" });
         }
@@ -21,7 +27,6 @@ const login = async (req, res) => {
       res.render("error", { error: " User with this email not exist" });
     }
   } catch (error) {
-    console.log(error);
     res.render("error", { error: error.message });
   }
 };

@@ -1,4 +1,5 @@
 const renderHomePage = (req, res) => {
-  res.render("renderHome");
+  let { user } = req.session;
+  res.render("renderHome", { user });
 };
 module.exports = renderHomePage;
