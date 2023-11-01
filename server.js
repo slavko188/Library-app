@@ -25,7 +25,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: HALF_DAY,
-      secure: IN_PRODUCTION,
+      secure: false,
     },
   })
 );
