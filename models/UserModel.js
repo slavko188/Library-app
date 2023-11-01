@@ -10,6 +10,7 @@ const UserSchema = new Schema({
   role: { type: String, default: role.USER },
   image: { type: String, default: DEFAULT_USER_IMAGE },
   joiningDate: { type: String, default: () => new Date().getTime().toString() },
+  isActivate: { type: Boolean, default: false },
 });
 
 const UserModel = model("users", UserSchema);

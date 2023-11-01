@@ -1,3 +1,4 @@
+const sendMail = require("../../lib/sendMail");
 const UserModel = require("../../models/UserModel");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
@@ -13,7 +14,8 @@ const signUp = async (req, res) => {
             return;
           }
           let newUser = new UserModel({ email, password: hashPassword });
-          await newUser.save();
+          let savedUser = await newUser.save();
+          let sendVerifyLink = await sendMail(savedUser._id, email);
           res.redirect("/login");
         });
       } else {
