@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs");
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    let foundUser = await UserModel.findOne({ email });
+    let foundUser = await UserModel.findOne({ email, isActivate: true });
     if (foundUser) {
       bcryptjs.compare(password, foundUser.password, (err, isMatch) => {
         if (err) {
@@ -20,11 +20,14 @@ const login = async (req, res) => {
           }),
             res.redirect("/home");
         } else {
-          res.render("error", { error: "Credentials not suport" });
+          res.render("error", { error: "Password is incorect!" });
         }
       });
     } else {
-      res.render("error", { error: " User with this email not exist" });
+      res.render("error", {
+        error:
+          " User with this email not exist or account is not activate! Check your mail.",
+      });
     }
   } catch (error) {
     res.render("error", { error: error.message });

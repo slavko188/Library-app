@@ -15,7 +15,10 @@ const signUp = async (req, res) => {
           }
           let newUser = new UserModel({ email, password: hashPassword });
           let savedUser = await newUser.save();
-          let sendVerifyLink = await sendMail(savedUser._id, email);
+          let subject = "Activation link";
+          let html = `<p> Click on activation link </p>
+          <a href="http://localhost:3000/auth/activate/${savedUser._id}">Activation link</a>`;
+          let sendVerifyLink = await sendMail({ email, subject, html });
           res.redirect("/login");
         });
       } else {
